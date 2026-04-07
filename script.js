@@ -291,3 +291,24 @@ function initializeDarkMode() {
             '<i class="fas fa-moon"></i>';
     });
 }
+// ======================
+// 12. PWA SERVICE WORKER
+// ======================
+
+if ("serviceWorker" in navigator) {
+    window.addEventListener("load", () => {
+        navigator.serviceWorker
+            .register("/Expense-Treacker/service-worker.js")
+            .then((registration) => {
+                console.log("✅ Service Worker Registered:", registration);
+
+                // Optional: Detect updates
+                registration.onupdatefound = () => {
+                    console.log("🔄 New update found");
+                };
+            })
+            .catch((error) => {
+                console.log("❌ Service Worker Registration Failed:", error);
+            });
+    });
+}
