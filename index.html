@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Tracker</title>
+    <title>Expense Tracker</title>
+<!-- 🔥 ICONS FOR HOME SCREEN -->
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-192.png">
+<link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-192.png">
+<link rel="manifest" href="manifest.json">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1><i class="fas fa-wallet"></i> Expense Tracker</h1>
+            <div class="header-controls">
+                <button id="darkModeToggle" class="btn-icon" title="Toggle Dark Mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button id="voiceBtn" class="btn-icon voice-btn" title="Voice Input">
+                    <i class="fas fa-microphone"></i>
+                </button>
+            </div>
+        </header>
+
+        <!-- Budget Section -->
+        <div class="budget-card">
+            <div class="budget-input">
+                <label>Monthly Budget:</label>
+                <div class="input-group">
+                    <span class="currency">$</span>
+                    <input type="number" id="budgetInput" placeholder="Enter budget" min="0" step="0.01">
+                    <button id="setBudgetBtn" class="btn-primary">Set Budget</button>
+                </div>
+            </div>
+            <div class="budget-stats">
+                <div class="stat">
+                    <span class="stat-label">Total Spent</span>
+                    <span class="stat-value" id="totalSpent">$0.00</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-label">Remaining</span>
+                    <span class="stat-value" id="remainingBalance">$0.00</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-label">Budget</span>
+                    <span class="stat-value" id="currentBudget">$0.00</span>
+                </div>
+            </div>
+            <div id="budgetWarning" class="warning hidden"></div>
+        </div>
+
+        <!-- Add Expense Form -->
+        <div class="add-expense-card">
+            <h3><i class="fas fa-plus-circle"></i> Add New Expense</h3>
+            <form id="expenseForm">
+                <div class="input-group">
+                    <span class="currency">$</span>
+                    <input type="number" id="amount" placeholder="Amount" min="0" step="0.01" required>
+                </div>
+                <div class="form-row">
+                    <select id="category" required>
+                        <option value="">Select Category</option>
+                        <option value="Food">Food</option>
+                        <option value="Travel">Travel</option>
+                        <option value="Shopping">Shopping</option>
+                        <option value="Bills">Bills</option>
+                        <option value="Entertainment">Entertainment</option>
+                        <option value="Other">Other</option>
+                    </select>
+                    <input type="date" id="date">
+                </div>
+                <input type="text" id="notes" placeholder="Notes (optional)">
+                <button type="submit" class="btn-primary full-width">
+                    <i class="fas fa-save"></i> Add Expense
+                </button>
+            </form>
+            <div id="voiceStatus" class="voice-status hidden"></div>
+        </div>
+
+        <!-- Filter -->
+        <div class="filter-section">
+            <select id="filterCategory">
+                <option value="all">All Categories</option>
+                <option value="Food">Food</option>
+                <option value="Travel">Travel</option>
+                <option value="Shopping">Shopping</option>
+                <option value="Bills">Bills</option>
+                <option value="Entertainment">Entertainment</option>
+                <option value="Other">Other</option>
+            </select>
+            <button id="clearAllBtn" class="btn-danger">
+                <i class="fas fa-trash"></i> Clear All
+            </button>
+        </div>
+
+        <!-- Expenses List -->
+        <div class="expenses-section">
+            <h3><i class="fas fa-list"></i> Expenses (<span id="expensesCount">0</span>)</h3>
+            <div id="expensesList" class="expenses-list"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
